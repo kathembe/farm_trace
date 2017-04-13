@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: farm_trace_development
+  
+test:
+  <<: *default
+  database: farm_trace_test
+
+production:
+  <<: *default
+  database: farm_trace_production
+  username: farm_trace
+  password: <%= ENV['FARM_TRACE_DATABASE_PASSWORD'] %>
